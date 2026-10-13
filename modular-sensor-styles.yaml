@@ -1,0 +1,116 @@
+# ==============================================================================
+# F1 Sensor Card (Nicxe/f1_sensor) - Weekend Hub Modular Styling Snippet
+# ==============================================================================
+# Apply this configuration to custom:f1-sensor-card to match the official
+# Formula 1 Weekend Hub / Pit Wall carbon chassis aesthetic with dark-themed
+# dropdowns and Formula 1 Display typography.
+# ==============================================================================
+
+appearance:
+  style: f1
+  mode: dark
+  font: f1
+  density: comfortable
+  accent: '#e10600'
+  accent_mode: style
+  surface: style
+  logos: true
+  logo_style: auto
+  logo_size: normal
+  flags: true
+  team_colors: true
+  full_names: false
+  numbers: tabular
+  tyre_style: ring
+  palette: {}
+
+styles: |
+  ha-card {
+    /* Enforce dark form controls for native dropdowns & sliders */
+    color-scheme: dark !important;
+    --f1-card-radius: 12px;
+    --f1-surface: #14151b;
+    --f1-panel: rgba(255, 255, 255, 0.04);
+    --f1-border: rgba(255, 255, 255, 0.15);
+    --f1-divider: rgba(255, 255, 255, 0.08);
+    --f1-accent: #ff3b30;
+    --f1-text: #f5f5f5;
+    --f1-muted: rgba(255, 255, 255, 0.65);
+    --f1-focus: #ff3b30;
+    --f1-hover: rgba(255, 255, 255, 0.12);
+    --f1-heading-font: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif;
+    --f1-heading-transform: uppercase;
+    --f1-module-heading-size: 1.25em;
+    --f1-card-padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 24px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: var(--ha-card-border-radius, 12px) !important;
+    background:
+      linear-gradient(110deg, transparent 0 47%, rgba(255, 255, 255, 0.025) 47% 48%, transparent 48% 100%),
+      radial-gradient(circle at 93% -8%, rgba(255, 59, 48, 0.22), transparent 38%),
+      linear-gradient(155deg, #0b0b0d 0%, #131315 68%, #0a0a0a 100%) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    font-family: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif;
+    color: #f5f5f5;
+  }
+
+  /* Red indicator stripe on the left edge */
+  ha-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: #ff3b30;
+    z-index: 5;
+  }
+
+  /* Header separator and typography */
+  header, .heading {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .heading strong {
+    font-family: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif !important;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    font-size: clamp(18px, 2.8vw, 24px);
+  }
+
+  /* Dropdown popup fix for select & options */
+  select,
+  option {
+    color-scheme: dark !important;
+    background-color: #14151b !important;
+    color: #f5f5f5 !important;
+  }
+
+  /* Module view styles */
+  f1-module-view {
+    color-scheme: dark !important;
+    font-family: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif;
+    --f1-heading-font: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif;
+    --f1-heading-transform: uppercase;
+    --f1-surface: #14151b;
+    --f1-border: rgba(255, 255, 255, 0.15);
+    --f1-focus: #ff3b30;
+    --f1-accent: #ff3b30;
+  }
+
+# Shadow DOM piercing rule using card-mod (ensures dropdowns remain dark inside shadow roots)
+card_mod:
+  style:
+    f1-module-view$: |
+      select {
+        color-scheme: dark !important;
+        background-color: #14151b !important;
+        color: #f5f5f5 !important;
+      }
+      select option {
+        background-color: #14151b !important;
+        color: #f5f5f5 !important;
+      }

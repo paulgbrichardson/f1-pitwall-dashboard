@@ -1,0 +1,366 @@
+icon: mdi:racing-helmet
+swipe_nav:
+  prevent_default: false
+  swipe_amount: 70
+  wrap: false
+title: F1 Pit Wall
+views:
+- icon: mdi:racing-helmet
+  max_columns: 3
+  path: f1
+  sections:
+  - cards:
+    - show_battles: true
+      show_fastest_lap: true
+      show_fia_documents: false
+      show_investigations: false
+      show_lap_count: false
+      show_leaders: false
+      show_next_race: false
+      show_pit_stops: true
+      show_race_control: true
+      show_track_limits: false
+      show_track_status: true
+      show_weather: false
+      speed: 35
+      subtitle: Incidents & Track Limits
+      title: Race Control Ticker
+      type: custom:f1-ticker-card
+      grid_options:
+        rows: auto
+        columns: 36
+      kicker: RACE CONTROL FEED
+      show_spoiler_toggle: true
+      spoiler_entity: switch.f1_no_spoiler_mode
+      spoiler_label: SPOILER MODE
+    column_span: 4
+    type: grid
+  - cards:
+    - type: custom:f1-sensor-card
+      modules:
+      - type: overview
+        fields: []
+        id: overview-1
+        title: ''
+        enabled: false
+        column_span: 1
+        show_header: true
+        show_table_header: true
+        unavailable: explain
+        focus_mode: inherit
+        selection:
+          mode: inherit
+        when:
+        - before
+        - active
+        - finished
+        - unknown
+        visibility: []
+        driver: ''
+        team: ''
+        options:
+          layout_mode: auto
+      - type: timing
+        id: timing-2
+        title: ''
+        enabled: true
+        column_span: 1
+        show_header: true
+        show_table_header: true
+        unavailable: explain
+        focus_mode: inherit
+        selection:
+          mode: inherit
+        when:
+        - before
+        - active
+        - finished
+        - unknown
+        visibility: []
+        driver: ''
+        team: ''
+        fields:
+        - position
+        - driver
+        - gap
+        - last_lap
+        - sector_1
+        - sector_2
+        - sector_3
+        - tyre
+        options:
+          profile: custom
+          sort: position
+          direction: asc
+          rows: 30
+          sectors: coherent
+          history: 0
+          show_gap_toggle: false
+      - type: race_control
+        id: race_control-3
+        title: ''
+        enabled: false
+        column_span: 1
+        show_header: true
+        show_table_header: true
+        unavailable: explain
+        focus_mode: inherit
+        selection:
+          mode: inherit
+        when:
+        - before
+        - active
+        - finished
+        - unknown
+        visibility: []
+        driver: ''
+        team: ''
+        fields:
+        - event_time
+        - message
+        options:
+          presentation: list
+          global_messages: include
+          limit: 30
+          order: newest
+          search: ''
+          categories: []
+          list_max_height: 600
+          hide_blue_flags: false
+          hide_track_limits: false
+          show_fia_logo: true
+          min_display_time: 0
+          show_clear_button: true
+      version: 3
+      title: ''
+      f1_entry_id: ''
+      layout: stack
+      columns: 2
+      appearance:
+        style: f1
+        mode: dark
+        font: f1
+        show_header: false
+        density: comfortable
+        accent: '#e10600'
+        accent_mode: style
+        accent_team: ''
+        surface: style
+        logos: true
+        logo_style: auto
+        logo_size: normal
+        flags: true
+        team_colors: true
+        full_names: false
+        numbers: tabular
+        tyre_style: ring
+        palette: {}
+      accessibility:
+        high_contrast: false
+        signals: shape
+        motion: system
+        announce: true
+      context:
+        driver: ''
+        team: ''
+        group: ''
+        scope: local
+        spoilers: inherit
+        viewing_controls: false
+        show_focus_control: false
+        show_freeze_control: false
+        selection:
+          mode: follow
+          source: auto
+        share:
+        - focus
+      grid_options:
+        columns: full
+      styles: "ha-card {\n  color-scheme: dark !important;\n  --f1-card-radius: 12px;\n\
+        \  --f1-surface: #14151b;\n  --f1-panel: rgba(255, 255, 255, 0.04);\n  --f1-border:\
+        \ rgba(255, 255, 255, 0.15);\n  --f1-divider: rgba(255, 255, 255, 0.08);\n\
+        \  --f1-accent: #ff3b30;\n  --f1-text: #f5f5f5;\n  --f1-muted: rgba(255, 255,\
+        \ 255, 0.65);\n  --f1-focus: #ff3b30;\n  --f1-hover: rgba(255, 255, 255, 0.12);\n\
+        \  --f1-heading-font: 'Formula1 Display', 'F1 Barlow Condensed', sans-serif;\n\
+        \  --f1-heading-transform: uppercase;\n  --f1-module-heading-size: 1.25em;\n\
+        \  --f1-card-padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 24px);\n \
+        \ position: relative;\n  overflow: hidden;\n  border: 1px solid rgba(255,\
+        \ 255, 255, 0.08) !important;\n  border-radius: var(--ha-card-border-radius,\
+        \ 12px) !important;\n  background:\n    linear-gradient(110deg, transparent\
+        \ 0 47%, rgba(255, 255, 255, 0.025) 47% 48%, transparent 48% 100%),\n    radial-gradient(circle\
+        \ at 93% -8%, rgba(255, 59, 48, 0.22), transparent 38%),\n    linear-gradient(155deg,\
+        \ #0b0b0d 0%, #131315 68%, #0a0a0a 100%) !important;\n  box-shadow: 0 16px\
+        \ 40px rgba(0, 0, 0, 0.35);\n  font-family: 'Formula1 Display', 'F1 Barlow\
+        \ Condensed', sans-serif;\n  color: #f5f5f5;\n}\n\nha-card::before {\n  content:\
+        \ '';\n  position: absolute;\n  inset: 0 auto 0 0;\n  width: 4px;\n  background:\
+        \ #ff3b30;\n  z-index: 5;\n}\n\nheader, .heading {\n  border-bottom: 1px solid\
+        \ rgba(255, 255, 255, 0.08);\n  padding-bottom: 12px;\n  margin-bottom: 16px;\n\
+        }\n\n.heading strong {\n  font-family: 'Formula1 Display', 'F1 Barlow Condensed',\
+        \ sans-serif !important;\n  font-weight: 800;\n  letter-spacing: -0.02em;\n\
+        \  text-transform: uppercase;\n  color: #f5f5f5;\n  font-size: clamp(18px,\
+        \ 2.8vw, 24px);\n}\n\nselect,\noption {\n  color-scheme: dark !important;\n\
+        \  background-color: #14151b !important;\n  color: #f5f5f5 !important;\n}\n\
+        \nf1-module-view {\n  color-scheme: dark !important;\n  font-family: 'Formula1\
+        \ Display', 'F1 Barlow Condensed', sans-serif;\n  --f1-heading-font: 'Formula1\
+        \ Display', 'F1 Barlow Condensed', sans-serif;\n  --f1-heading-transform:\
+        \ uppercase;\n  --f1-surface: #14151b;\n  --f1-border: rgba(255, 255, 255,\
+        \ 0.15);\n  --f1-focus: #ff3b30;\n  --f1-accent: #ff3b30;\n}\n"
+      card_mod:
+        style:
+          f1-module-view$: "select {\n  color-scheme: dark !important;\n  background-color:\
+            \ #14151b !important;\n  color: #f5f5f5 !important;\n}\nselect option\
+            \ {\n  background-color: #14151b !important;\n  color: #f5f5f5 !important;\n\
+            }\n"
+    column_span: 2
+    type: grid
+  - cards:
+    - driver_positions_entity: auto
+      entry_id: auto
+      lap_count_entity: auto
+      title: F1 Live Track Map
+      track_status_entity: auto
+      type: custom:f1-track-map-card
+    - cards:
+      - type: custom:f1-mode-toggle-card
+        entity: input_boolean.f1_replay_mode
+        status_entity: sensor.f1_replay_status
+      - type: conditional
+        conditions:
+        - condition: state
+          entity: input_boolean.f1_replay_mode
+          state: 'off'
+        card:
+          type: custom:f1-live-control-card
+          kicker: ''
+          title: LIVE TV SYNCHRONISATION
+          subtitle: DELAY CALIBRATION & OFFSET
+          delay_entity: number.f1_live_delay
+          calibration_entity: switch.f1_delay_calibration
+          match_button_entity: button.f1_match_live_delay
+          reference_entity: select.f1_live_delay_reference
+      - type: conditional
+        conditions:
+        - condition: state
+          entity: input_boolean.f1_replay_mode
+          state: 'on'
+        card:
+          type: custom:f1-sensor-card
+          modules:
+          - type: replay
+            id: replay-1
+            title: ''
+            enabled: true
+            column_span: 1
+            show_header: true
+            show_table_header: true
+            unavailable: explain
+            focus_mode: inherit
+            selection:
+              mode: inherit
+            when:
+            - before
+            - active
+            - finished
+            - unknown
+            visibility: []
+            driver: ''
+            team: ''
+            fields:
+            - replay_selection
+            - replay_transport
+            - replay_progress
+            options:
+              display: full
+              secondary_selects: true
+              start_reference: true
+              seek_controls: true
+              refresh: true
+              status_details: true
+              show_button_labels: true
+          version: 3
+          title: F1 Replay
+          f1_entry_id: ''
+          layout: stack
+          columns: 2
+          appearance:
+            style: f1
+            mode: dark
+            font: f1
+            show_header: true
+            density: comfortable
+            accent: '#e10600'
+            accent_mode: style
+            accent_team: ''
+            surface: style
+            logos: true
+            logo_style: auto
+            logo_size: normal
+            flags: true
+            team_colors: true
+            full_names: false
+            numbers: tabular
+            tyre_style: ring
+            palette: {}
+          accessibility:
+            high_contrast: false
+            signals: shape
+            motion: system
+            announce: true
+          context:
+            driver: ''
+            team: ''
+            group: ''
+            scope: local
+            spoilers: inherit
+            viewing_controls: false
+            show_focus_control: true
+            show_freeze_control: true
+            selection:
+              mode: follow
+              source: auto
+            share:
+            - focus
+          styles: "ha-card {\n  color-scheme: dark !important;\n  --f1-card-radius:\
+            \ 12px;\n  --f1-surface: #14151b;\n  --f1-panel: rgba(255, 255, 255, 0.04);\n\
+            \  --f1-border: rgba(255, 255, 255, 0.15);\n  --f1-divider: rgba(255,\
+            \ 255, 255, 0.08);\n  --f1-accent: #ff3b30;\n  --f1-text: #f5f5f5;\n \
+            \ --f1-muted: rgba(255, 255, 255, 0.65);\n  --f1-focus: #ff3b30;\n  --f1-hover:\
+            \ rgba(255, 255, 255, 0.12);\n  --f1-heading-font: 'Formula1 Display',\
+            \ 'F1 Barlow Condensed', sans-serif;\n  --f1-heading-transform: uppercase;\n\
+            \  --f1-module-heading-size: 1.25em;\n  --f1-card-padding: clamp(14px,\
+            \ 2.5vw, 20px) clamp(16px, 3vw, 24px);\n  position: relative;\n  overflow:\
+            \ hidden;\n  border: 1px solid rgba(255, 255, 255, 0.08) !important;\n\
+            \  border-radius: var(--ha-card-border-radius, 12px) !important;\n  background:\n\
+            \    linear-gradient(110deg, transparent 0 47%, rgba(255, 255, 255, 0.025)\
+            \ 47% 48%, transparent 48% 100%),\n    radial-gradient(circle at 93% -8%,\
+            \ rgba(255, 59, 48, 0.22), transparent 38%),\n    linear-gradient(155deg,\
+            \ #0b0b0d 0%, #131315 68%, #0a0a0a 100%) !important;\n  box-shadow: 0\
+            \ 16px 40px rgba(0, 0, 0, 0.35);\n  font-family: 'Formula1 Display', 'F1\
+            \ Barlow Condensed', sans-serif;\n  color: #f5f5f5;\n}\n\nha-card::before\
+            \ {\n  content: '';\n  position: absolute;\n  inset: 0 auto 0 0;\n  width:\
+            \ 4px;\n  background: #ff3b30;\n  z-index: 5;\n}\n\nheader, .heading {\n\
+            \  border-bottom: 1px solid rgba(255, 255, 255, 0.08);\n  padding-bottom:\
+            \ 12px;\n  margin-bottom: 16px;\n}\n\n.heading strong {\n  font-family:\
+            \ 'Formula1 Display', 'F1 Barlow Condensed', sans-serif !important;\n\
+            \  font-weight: 800;\n  letter-spacing: -0.02em;\n  text-transform: uppercase;\n\
+            \  color: #f5f5f5;\n  font-size: clamp(18px, 2.8vw, 24px);\n}\n\nselect,\n\
+            option {\n  color-scheme: dark !important;\n  background-color: #14151b\
+            \ !important;\n  color: #f5f5f5 !important;\n}\n\nf1-module-view {\n \
+            \ color-scheme: dark !important;\n  font-family: 'Formula1 Display', 'F1\
+            \ Barlow Condensed', sans-serif;\n  --f1-heading-font: 'Formula1 Display',\
+            \ 'F1 Barlow Condensed', sans-serif;\n  --f1-heading-transform: uppercase;\n\
+            \  --f1-surface: #14151b;\n  --f1-border: rgba(255, 255, 255, 0.15);\n\
+            \  --f1-focus: #ff3b30;\n  --f1-accent: #ff3b30;\n}\n"
+          card_mod:
+            style:
+              f1-module-view$: "select {\n  color-scheme: dark !important;\n  background-color:\
+                \ #14151b !important;\n  color: #f5f5f5 !important;\n}\nselect option\
+                \ {\n  background-color: #14151b !important;\n  color: #f5f5f5 !important;\n\
+                }\n"
+      type: vertical-stack
+    column_span: 1
+    type: grid
+  title: F1
+  type: sections
+  dense_section_placement: true
+  cards: []
