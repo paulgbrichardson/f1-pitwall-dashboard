@@ -60,6 +60,29 @@ Install the following components from HACS:
 | **F1 Session Mode Toggle Card** | HACS Plugin | [`paulgbrichardson/f1-mode-toggle-card`](https://github.com/paulgbrichardson/f1-mode-toggle-card) |
 | **card-mod** | HACS Plugin | [`thomasloven/lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
 
+### 🔧 Required Helper Entity
+
+The mode switching deck (Section 2) uses a Home Assistant toggle helper to flip between **Live Synchronisation** and **Session Replay Deck**:
+
+- **Entity ID**: `input_boolean.f1_replay_mode`
+- **Name**: `F1 Replay Mode`
+- **Icon**: `mdi:history`
+
+#### Option A: Create via Home Assistant UI (Recommended)
+1. Navigate to **Settings** → **Devices & Services** → **Helpers**.
+2. Click **+ Create Helper** and select **Toggle** (`input_boolean`).
+3. Enter Name: `F1 Replay Mode` (Home Assistant will automatically assign `input_boolean.f1_replay_mode`).
+4. Set Icon: `mdi:history` and click **Create**.
+
+#### Option B: Create via `configuration.yaml`
+Add the following snippet to your `configuration.yaml` and restart Home Assistant or reload Input Booleans:
+```yaml
+input_boolean:
+  f1_replay_mode:
+    name: F1 Replay Mode
+    icon: mdi:history
+```
+
 ---
 
 ## 🚀 Quick Start Setup
