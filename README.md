@@ -15,15 +15,13 @@ Built with real-time race engineering in mind, this layout unites continuous 60 
 ## 📸 Dashboard Previews
 
 ### Desktop Pit Wall View
-![F1 Pit Wall Desktop View](screenshots/desktop-pitwall.png)
+![F1 Pit Wall Full](screenshots/pitwall-full.png)
 
 ### Mobile App View
-![F1 Pit Wall Mobile View](screenshots/mobile-pitwall.png)
+![F1 Pit Wall Mobile View](screenshots/pitwall-mobile.png)
 
-### Live vs. Replay Synchronisation Deck
-![F1 Live vs Replay Mode](screenshots/replay-live-controls.png)
-
-*(To add your own screenshots, place your images in the [`screenshots/`](screenshots/) directory).*
+### Live Mode
+![F1 Spoiler Mode](screenshots/pitwall-live-mode.png)
 
 ---
 
